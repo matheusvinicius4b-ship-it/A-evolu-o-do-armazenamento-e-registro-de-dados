@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../img/images (2).jpg');
+    background-size: cover;
+    text-align: center;
+}
+
+#titulo {
+    color: #ffffff;
+    font-size: 40px;
+    -webkit-text-stroke: 3px black;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.conteudo {
+    background-color: black;
+    color: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 30px;
+    line-height: 1.6;
+}
+
+.conteudo p {
+    margin-bottom: 15px;
+}
+
+.botoes {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    border: 3px solid #ffffff;
+    font-size: 24px;
+    border-radius: 5px;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Ativa a transição entre páginas diferentes */
+@view-transition {
+    navigation: auto;
+}
+
+/* Animação da página antiga saindo para a ESQUERDA */
+@keyframes slide-out-left {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+/* Animação da página nova entrando pela DIREITA */
+@keyframes slide-in-from-right {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Aplica a animação na página que está saindo (antiga) */
+::view-transition-old(root) {
+    animation: 0.4s ease-in-out both slide-out-left;
+}
+
+/* Aplica a animação na página que está entrando (nova) */
+::view-transition-new(root) {
+    animation: 0.4s ease-in-out both slide-in-from-right;
+}
